@@ -1,0 +1,17 @@
+{
+	"name": "zucchi/silverstripe-membermanagement",
+	"description": "Members Self Management",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "member", "management"],
+	"license": "http://zucchi.co.uk/legals/bsd-license",
+	"authors": [
+		{
+			"name": "Matt Cockayne",
+			"email": "matt@zucchi.co.uk"
+		}
+	],
+	"require": {
+		"silverstripe/framework": "3.*",
+		"silverstripe/cms": "3.*"
+	}
+}
