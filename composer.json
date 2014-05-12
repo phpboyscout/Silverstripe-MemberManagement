@@ -3,7 +3,7 @@
 	"description": "Members Self Management",
 	"type": "silverstripe-module",
 	"keywords": ["silverstripe", "member", "management"],
-	"license": "http://zucchi.co.uk/legals/bsd-license",
+	"license": "BSD 3 clause",
 	"authors": [
 		{
 			"name": "Matt Cockayne",
