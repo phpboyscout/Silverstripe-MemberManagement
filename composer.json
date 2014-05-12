@@ -1,5 +1,5 @@
 {
-	"name": "zucchi/silverstripe-membermanagement",
+	"name": "zucchi/membermanagement",
 	"description": "Members Self Management",
 	"type": "silverstripe-module",
 	"keywords": ["silverstripe", "member", "management"],

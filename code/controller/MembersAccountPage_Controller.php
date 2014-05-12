@@ -138,7 +138,7 @@ class MembersAccountPage_Controller extends Page_Controller
             $fields->push($field);
         }
 
-        $this->extend('updateProfileFields', $fields);
+        $this->extend('updateMemberAccountFields', $fields);
         return $fields;
     }
 
