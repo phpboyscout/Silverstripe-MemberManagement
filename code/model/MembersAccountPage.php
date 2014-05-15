@@ -74,7 +74,20 @@ class MembersAccountPage extends Page
                 $profileField->MemberField = $memberField->name;
                 $profileField->AccountPageID = $page->ID;
                 $profileField->write();
+            } else {
+                // remove field from $pageFieldNmes
+                $key = array_search($memberField->name, $pageFieldNames);
+                unset($pageFieldNames[$key]);
             }
+        }
+
+        // for each remaining item in $pageFieldNames delete the MemberAccountField
+        foreach ($pageFieldNames as $name) {
+            $toRemove = MembersAccountField::get()->filter('MemberField', $name);
+            foreach ($toRemove as $removeField) {
+                $removeField->delete();
+            }
+
         }
     }
 }
