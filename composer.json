@@ -1,5 +1,5 @@
 {
-	"name": "zucchi/membermanagement",
+	"name": "phpboyscout/membermanagement",
 	"description": "Members Self Management",
 	"type": "silverstripe-module",
 	"keywords": ["silverstripe", "member", "management"],
@@ -7,7 +7,7 @@
 	"authors": [
 		{
 			"name": "Matt Cockayne",
-			"email": "matt@zucchi.co.uk"
+			"email": "matt@phpboyscout.uk"
 		}
 	],
 	"require": {
