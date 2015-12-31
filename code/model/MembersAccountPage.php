@@ -42,7 +42,6 @@ class MembersAccountPage extends Page
 
     public function onAfterWrite()
     {
-
         $this->addMemberAccountFields($this);
         parent::onAfterWrite();
     }
@@ -87,7 +86,6 @@ class MembersAccountPage extends Page
             foreach ($toRemove as $removeField) {
                 $removeField->delete();
             }
-
         }
     }
 }

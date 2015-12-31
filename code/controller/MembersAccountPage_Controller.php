@@ -14,7 +14,7 @@
 class MembersAccountPage_Controller extends Page_Controller
 {
 
-    private static $allowed_actions = array (
+    private static $allowed_actions = array(
         'index', 'update'
     );
 
@@ -65,18 +65,18 @@ class MembersAccountPage_Controller extends Page_Controller
     /**
      * Updates an existing Member's profile.
      */
-    public function save(array $data, Form $form) {
-
+    public function save(array $data, Form $form)
+    {
         $form->saveInto($this->member);
 
         try {
             $this->member->write();
-        } catch(ValidationException $e) {
+        } catch (ValidationException $e) {
             $form->sessionMessage($e->getResult()->message(), 'bad');
             return $this->redirectBack();
         }
 
-        $form->sessionMessage (
+        $form->sessionMessage(
             _t('MemberProfiles.PROFILEUPDATED', 'Your profile has been updated.'),
             'good'
         );
@@ -87,18 +87,19 @@ class MembersAccountPage_Controller extends Page_Controller
      * @param  string $context
      * @return FieldSet
      */
-    protected function getAccountFields($member = false) {
+    protected function getAccountFields($member = false)
+    {
         $accountFields = $this->Fields();
         $fields        = new FieldList();
 
         // depending on the context, load fields from the current member
-        if($member) {
+        if ($member) {
             $memberFields = $member->getMemberFormFields();
         } else {
             $memberFields = singleton('Member')->getMemberFormFields();
         }
 
-        foreach($accountFields as $accountField) {
+        foreach ($accountFields as $accountField) {
             $visible  = ($accountField->Visibility !== 'Hidden');
             $editable = $accountField->Editable;
             $name        = $accountField->MemberField;
@@ -110,28 +111,29 @@ class MembersAccountPage_Controller extends Page_Controller
 //                $memberField->setSource($availableGroups);
 //            }
 
-            if(!$memberField || !$visible) continue;
+            if (!$memberField || !$visible) {
+                continue;
+            }
 
             $field = clone $memberField;
 
             if ($field instanceof UploadField) {
                 $field->setCanAttachExisting(false);
                 $field->setOverwriteWarning(false);
-
             }
 
-            if(!$editable) {
+            if (!$editable) {
                 $field->performReadonlyTransformation();
             }
 
             $field->setTitle($accountField->Title);
             $field->setDescription($accountField->Note);
 
-            if(!$member && $accountField->DefaultValue) {
+            if (!$member && $accountField->DefaultValue) {
                 $field->setValue($accountField->DefaultValue);
             }
 
-            if($accountField->CustomError) {
+            if ($accountField->CustomError) {
                 $field->setCustomValidationMessage($accountField->CustomError);
             }
 
@@ -141,5 +143,4 @@ class MembersAccountPage_Controller extends Page_Controller
         $this->extend('updateMemberAccountFields', $fields);
         return $fields;
     }
-
-} 
+}
